@@ -63,8 +63,16 @@ Public Class Launcher
                             "FATAL: .ENDB was missing. (0x00000001)", "Pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Environment.Exit(0)
         End Try
+        'Tanya lokasi Startup
+        Dim StartupLocation As String = Path.Combine(Location, "Startup.exe")
+        If File.Exists(StartupLocation) = False Then
+            MessageBox.Show("Ada file yang hilang! Tolong hubungi admin dengan menampilkan kode error tersebut:" + vbNewLine +
+                            "FATAL: Startup was missing. (0x00000001)", "Pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Environment.Exit(0)
+        End If
+
         'Copyright
-        'CopyrightLabel.Text = "(C) 2019-" + DateTime.Now.Year.ToString() + " UPT Komputer dan Sistem Informasi. All rights reserved."
+        CopyrightLabel.Text = "(C) 2019-" + DateTime.Now.Year.ToString() + " UPT Komputer dan Sistem Informasi. All rights reserved."
 
         'Debug
         DebugLabelExtend("Siap beroprasi!")
@@ -72,6 +80,19 @@ Public Class Launcher
         'Stop
         StopButton.Visible = False
         PageJustice.Visible = False
+
+        'Tanya startup
+        Dim StartupLoc As String = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\Poltek_Announcer.lnk"
+        If File.Exists(StartupLoc) = False Then
+            Dim dialogResult As DialogResult = MessageBox.Show("Startup belum terpasang di komputer ini, apakah anda ingin memasangnya?" + vbNewLine +
+                                                               "Keuntungannya adalah anda bisa menyalakan aplikasi ini secara otomatis ketika komputer anda menyala.",
+                                                               "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If dialogResult = DialogResult.Yes Then
+                Process.Start(StartupLocation, "-startup-silent")
+                MessageBox.Show("Startup telah dipasang!",
+                    "Pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        End If
     End Sub
 
     Private Sub PageJusticeHandler(Check As CheckBox, Box As TextBox)

@@ -8,41 +8,56 @@ namespace LauncherAnnouncer
 {
     class Program
     {
+        void StartUp(bool silent)
+        {
+            string path = Application.StartupPath;
+            string shortcutAddress = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\Poltek_Announcer.lnk";
+            WshShell shell = new WshShell();
+
+            Console.WriteLine("Startup terpasang di {0}", shortcutAddress);
+            if (!System.IO.File.Exists(shortcutAddress))
+            {
+                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+                shortcut.Description = "Poltek_Announcer";
+                shortcut.TargetPath = Path.Combine(path, "Startup.exe");
+                shortcut.Save();
+            }
+            if (silent == false)
+            {
+                Console.WriteLine("Aplikasi telah berhasil terpasang di Startup!\nTekan sembarang tombol untuk keluar.");
+                Console.ReadLine();
+            }
+            Environment.Exit(0x00000000);
+        }
         static void Main(string[] args)
         {
+            var p = new Program();
+
             int monitors = Screen.AllScreens.Length;
             string path = Application.StartupPath;
             string appEngine = Path.Combine(path, "PoltekAnnouncer.exe");
             string shortcutAddress = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\Poltek_Announcer.lnk";
-
-            foreach (string a in args) {
-                if (a.ToLower() == "-help")
-                {
-                    Console.WriteLine(
-                        "Penggunaan:\n" +
+            string help = "Penggunaan:\n" +
                         "    startup.exe <flag>\n\n" +
                         "Adapun beberapa flag yang diperbolehkan di sini adalah:\n" +
                         "-startup\n" +
                         "    Untuk memasang startup di komputer ini.\n" +
                         "-startup-remove\n" +
-                        "    Untuk menghapus startup di komputer ini.\n\n");
+                        "    Untuk menghapus startup di komputer ini.\n\n";
+
+            foreach (string a in args) {
+                if (a.ToLower() == "-help")
+                {
+                    Console.WriteLine(help);
                     Environment.Exit(0x00000000);
                 }
                 else if (a.ToLower() == "-startup")
                 {
-                    WshShell shell = new WshShell();
-
-                    Console.WriteLine("Startup terpasang di {0}", shortcutAddress);
-                    if (!System.IO.File.Exists(shortcutAddress))
-                    {
-                        IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
-                        shortcut.Description = "Poltek_Announcer";
-                        shortcut.TargetPath = Path.Combine(path, "Startup.exe");
-                        shortcut.Save();
-                    }
-                    Console.WriteLine("Aplikasi telah berhasil terpasang di Startup!\nTekan sembarang tombol untuk keluar.");
-                    Console.ReadLine();
-                    Environment.Exit(0x00000000);
+                    p.StartUp(false);
+                }
+                else if (a.ToLower() == "-startup-silent")
+                {
+                    p.StartUp(true);
                 }
                 else if (a.ToLower() == "-startup-remove")
                 {
@@ -62,6 +77,16 @@ namespace LauncherAnnouncer
                         Console.ReadLine();
                         Environment.Exit(0x00000000);
                     }
+                }
+                else if (a.ToLower() == "-startup-loc")
+                {
+                    Console.WriteLine(shortcutAddress);
+                    Environment.Exit(0x00000000);
+                }
+                else
+                {
+                    Console.WriteLine(help);
+                    Environment.Exit(0x00000000);   
                 }
             }
 

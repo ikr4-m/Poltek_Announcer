@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Assets\Commit.vb" />
     <Compile Include="Assets\Launcher.vb">
       <SubType>Form</SubType>
     </Compile>
