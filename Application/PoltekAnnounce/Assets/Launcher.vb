@@ -12,6 +12,9 @@ Public Class Launcher
     Dim Fonto As String = Path.Combine(Location, "fonto.endb")
     Dim Active As Boolean = False
 
+    Public Shared StartUpError As Boolean
+    Public Shared StartUpArgument As Boolean
+
     Private Sub TambahBtn_Click(sender As Object, e As EventArgs) Handles TambahBtn.Click
         AddListBox.Show()
     End Sub
@@ -61,14 +64,13 @@ Public Class Launcher
             Environment.Exit(0)
         End Try
         'Copyright
-        CopyrightLabel.Text = "(C) 2019-" + DateTime.Now.Year.ToString() + " UPT Komputer dan Sistem Informasi. All rights reserved."
+        'CopyrightLabel.Text = "(C) 2019-" + DateTime.Now.Year.ToString() + " UPT Komputer dan Sistem Informasi. All rights reserved."
 
         'Debug
         DebugLabelExtend("Siap beroprasi!")
 
         'Stop
         StopButton.Visible = False
-
         PageJustice.Visible = False
     End Sub
 
@@ -107,6 +109,9 @@ Public Class Launcher
                     Pindah()
                 End If
             Else
+                If StartUpArgument = True Then
+                    StartUpError = True
+                End If
                 MsgBox("Sayangnya, monitor tidak terdeteksi. Silahkan ubah ke mode Extended, bukan mode Duplicate" _
                     , MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Informasi")
             End If
@@ -153,6 +158,9 @@ Public Class Launcher
     End Sub
 
     Private Sub StopButton_Click(sender As Object, e As EventArgs) Handles StopButton.Click
+        StartUpError = False
+        StartUpArgument = False
+
         Active = False
         ExecutionButton.Text = "Jalankan"
         Viewers.Close()
