@@ -13,5 +13,14 @@ Aplikasi ini memungkinkan anda untuk membuat pengumuman sementara di komputer. A
 2. Jalankan PoltekAnnouncer.exe
 3. Ubah sedikit isinya dan aplikasi anda siap dijalankan dengan menekan tombol **Jalankan**.
 
+### Catatan Sedikit
+Aplikasi anda akan ketahuan berjalan hanya dengan melihat perbandingan di bawah ini. Aplikasi yang tidak berjalan aplikasinya berwarna putih terang dan apabila aplikasi tersebut telah berjalan maka aplikasinya berwarna hitam kelabu.
+
+Contoh yang tidak aktif:
+![Tidak aktif](https://raw.githubusercontent.com/skymunn/Poltek_Announcer/master/src/Screenshot_145.png)
+
+Contoh yang aktif:
+![Aktif](https://raw.githubusercontent.com/skymunn/Poltek_Announcer/master/src/Screenshot_146.png)
+
 # Lisensi
 *Aplikasi ini dilindungi oleh GNU Affero General Public License v3.0, apabila di temukan beberapa pelanggaran terhadap lisensi ini maka bagi pelanggar akan mendapatkan hukuman yang setimpal. Untuk lebih jelasnya silahkan mengunjungi https://www.gnu.org/licenses/*
