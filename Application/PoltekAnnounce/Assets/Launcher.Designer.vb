@@ -32,10 +32,13 @@ Partial Class Launcher
         Me.PageJustice = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TextBoxPengumuman1 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.TextBoxPengumuman2 = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.TextBoxPengumuman3 = New System.Windows.Forms.TextBox()
         Me.FontSize = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -43,9 +46,6 @@ Partial Class Launcher
         Me.CopyrightLabel = New System.Windows.Forms.Label()
         Me.DebugLabel = New System.Windows.Forms.Label()
         Me.StopButton = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -149,6 +149,16 @@ Partial Class Launcher
         Me.TabPage1.Text = "Halaman 1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(6, 6)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(89, 21)
+        Me.CheckBox1.TabIndex = 3
+        Me.CheckBox1.Text = "Nyalakan"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'TextBoxPengumuman1
         '
         Me.TextBoxPengumuman1.Location = New System.Drawing.Point(6, 33)
@@ -171,6 +181,16 @@ Partial Class Launcher
         Me.TabPage2.Text = "Halaman 2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(6, 6)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(89, 21)
+        Me.CheckBox2.TabIndex = 4
+        Me.CheckBox2.Text = "Nyalakan"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
         'TextBoxPengumuman2
         '
         Me.TextBoxPengumuman2.Location = New System.Drawing.Point(6, 33)
@@ -191,6 +211,16 @@ Partial Class Launcher
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Halaman 3"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(6, 6)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(89, 21)
+        Me.CheckBox3.TabIndex = 4
+        Me.CheckBox3.Text = "Nyalakan"
+        Me.CheckBox3.UseVisualStyleBackColor = True
         '
         'TextBoxPengumuman3
         '
@@ -255,40 +285,11 @@ Partial Class Launcher
         Me.StopButton.Text = "Hentikan"
         Me.StopButton.UseVisualStyleBackColor = True
         '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(6, 6)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(89, 21)
-        Me.CheckBox1.TabIndex = 3
-        Me.CheckBox1.Text = "Nyalakan"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(6, 6)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(89, 21)
-        Me.CheckBox2.TabIndex = 4
-        Me.CheckBox2.Text = "Nyalakan"
-        Me.CheckBox2.UseVisualStyleBackColor = True
-        '
-        'CheckBox3
-        '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(6, 6)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(89, 21)
-        Me.CheckBox3.TabIndex = 4
-        Me.CheckBox3.Text = "Nyalakan"
-        Me.CheckBox3.UseVisualStyleBackColor = True
-        '
         'Launcher
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(928, 384)
         Me.Controls.Add(Me.StopButton)
         Me.Controls.Add(Me.DebugLabel)

@@ -153,6 +153,8 @@ Public Class Launcher
             .ContainerLabel.Font = New Font(.ContainerLabel.Font.SystemFontName, Integer.Parse(FontSize.Value), FontStyle.Regular)
 
             Active = True
+
+            Me.BackColor = SystemColors.ControlDark
         End With
     End Sub
 
@@ -187,6 +189,7 @@ Public Class Launcher
         Viewers.Close()
         StopButton.Visible = False
         DebugLabelExtend("Aplikasi berhasil dihentikan!")
+        Me.BackColor = SystemColors.Control
     End Sub
 
     Private Sub Launcher_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing

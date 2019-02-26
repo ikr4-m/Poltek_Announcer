@@ -22,24 +22,27 @@ namespace LauncherAnnouncer
         {
             var p = new Program();
 
-            switch (args[0])
+            foreach (string a in args)
             {
-                // -help
-                case "-help": p.Help.Help(); break;
-                // -startup
-                case "-startup": p.Startup.Normal(); break;
-                // -startup-silent
-                case "-startup-silent": p.Startup.Silent(); break;
-                // -startup-remove
-                case "-startup-remove": p.Startup.DeleteStartup(p.shortcutAddress); break;
-                // -startup-location
-                case "-startup-loc":
-                case "-startup-location":
-                    Console.WriteLine(p.shortcutAddress);
-                    Environment.Exit(0);
-                    break;
-                // default
-                default: p.Help.Help(); break;
+                switch (a[0].ToString().ToLower())
+                {
+                    // -help
+                    case "-help": p.Help.Help(); break;
+                    // -startup
+                    case "-startup": p.Startup.Normal(); break;
+                    // -startup-silent
+                    case "-startup-silent": p.Startup.Silent(); break;
+                    // -startup-remove
+                    case "-startup-remove": p.Startup.DeleteStartup(p.shortcutAddress); break;
+                    // -startup-location
+                    case "-startup-loc":
+                    case "-startup-location":
+                        Console.WriteLine(p.shortcutAddress);
+                        Environment.Exit(0);
+                        break;
+                    // default
+                    default: p.Help.Help(); break;
+                }
             }
 
             int monitors = Screen.AllScreens.Length;
