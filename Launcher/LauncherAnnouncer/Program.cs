@@ -2,98 +2,52 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
-using IWshRuntimeLibrary;
+using LauncherAnnouncer.Assets;
 
 namespace LauncherAnnouncer
 {
-    class Program
+    class Program 
     {
-        void StartUp(bool silent)
-        {
-            string path = Application.StartupPath;
-            string shortcutAddress = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\Poltek_Announcer.lnk";
-            WshShell shell = new WshShell();
+        // BEGIN SHARED VARIABLE //
+        public string path = Application.StartupPath;
+        public string shortcutAddress = Environment.GetFolderPath(
+            Environment.SpecialFolder.Startup) + @"\Poltek_Announcer.lnk";
 
-            Console.WriteLine("Startup terpasang di {0}", shortcutAddress);
-            if (!System.IO.File.Exists(shortcutAddress))
-            {
-                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
-                shortcut.Description = "Poltek_Announcer";
-                shortcut.TargetPath = Path.Combine(path, "Startup.exe");
-                shortcut.Save();
-            }
-            if (silent == false)
-            {
-                Console.WriteLine("Aplikasi telah berhasil terpasang di Startup!\nTekan sembarang tombol untuk keluar.");
-                Console.ReadLine();
-            }
-            Environment.Exit(0x00000000);
-        }
+        // BEGIN SHARED CLASS //
+        private readonly StartupModule Startup = new StartupModule();
+        private readonly HelpModule Help = new HelpModule();
+
+        // BEGIN MAIN //
         static void Main(string[] args)
         {
             var p = new Program();
 
-            int monitors = Screen.AllScreens.Length;
-            string path = Application.StartupPath;
-            string appEngine = Path.Combine(path, "PoltekAnnouncer.exe");
-            string shortcutAddress = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\Poltek_Announcer.lnk";
-            string help = "Penggunaan:\n" +
-                        "    startup.exe <flag>\n\n" +
-                        "Adapun beberapa flag yang diperbolehkan di sini adalah:\n" +
-                        "-startup\n" +
-                        "    Untuk memasang startup di komputer ini.\n" +
-                        "-startup-remove\n" +
-                        "    Untuk menghapus startup di komputer ini.\n\n";
-
-            foreach (string a in args) {
-                if (a.ToLower() == "-help")
-                {
-                    Console.WriteLine(help);
-                    Environment.Exit(0x00000000);
-                }
-                else if (a.ToLower() == "-startup")
-                {
-                    p.StartUp(false);
-                }
-                else if (a.ToLower() == "-startup-silent")
-                {
-                    p.StartUp(true);
-                }
-                else if (a.ToLower() == "-startup-remove")
-                {
-                    string pathStartup = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-                    if (System.IO.File.Exists(shortcutAddress))
-                    {
-                        System.IO.File.Delete(shortcutAddress);
-                        Console.WriteLine("Startup berhasil dicopot!");
-                        Console.WriteLine("Tekan ENTER untuk keluar dari aplikasi ini.");
-                        Console.ReadLine();
-                        Environment.Exit(0x00000000);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Startup belum terpasang! Launch aplikasi ini dengan -shortcut untuk memasang startup di komputer anda.");
-                        Console.WriteLine("Tekan ENTER untuk keluar dari aplikasi ini.");
-                        Console.ReadLine();
-                        Environment.Exit(0x00000000);
-                    }
-                }
-                else if (a.ToLower() == "-startup-loc")
-                {
-                    Console.WriteLine(shortcutAddress);
-                    Environment.Exit(0x00000000);
-                }
-                else
-                {
-                    Console.WriteLine(help);
-                    Environment.Exit(0x00000000);   
-                }
+            switch (args[0])
+            {
+                // -help
+                case "-help": p.Help.Help(); break;
+                // -startup
+                case "-startup": p.Startup.Normal(); break;
+                // -startup-silent
+                case "-startup-silent": p.Startup.Silent(); break;
+                // -startup-remove
+                case "-startup-remove": p.Startup.DeleteStartup(p.shortcutAddress); break;
+                // -startup-location
+                case "-startup-loc":
+                case "-startup-location":
+                    Console.WriteLine(p.shortcutAddress);
+                    Environment.Exit(0);
+                    break;
+                // default
+                default: p.Help.Help(); break;
             }
 
+            int monitors = Screen.AllScreens.Length;
+            string appEngine = Path.Combine(p.path, "PoltekAnnouncer.exe");
             if (monitors == 2)
             {
                 Console.WriteLine("Mendetksi {0} monitor, langsung menjalankan aplikasi dan viewersnya.", monitors.ToString());
-                if (System.IO.File.Exists(appEngine))
+                if (File.Exists(appEngine))
                 {
                     Process.Start(appEngine, "-start-viewer");
                 }
@@ -102,13 +56,13 @@ namespace LauncherAnnouncer
                     Console.WriteLine("Engine tidak ditemukan!");
                     Console.WriteLine("Tekan ENTER untuk keluar dari aplikasi ini.");
                     Console.ReadLine();
-                    Environment.Exit(0x00000000);
+                    Environment.Exit(0);
                 }
             }
             else if (monitors == 1)
             {
                 Console.WriteLine("Hanya terdeteksi {0} monitor, menjalankan aplikasi seperti biasa.", monitors.ToString());
-                if (System.IO.File.Exists(appEngine))
+                if (File.Exists(appEngine))
                 {
                     Process.Start(appEngine, "-start");
                 }
@@ -117,14 +71,14 @@ namespace LauncherAnnouncer
                     Console.WriteLine("Engine tidak ditemukan!");
                     Console.WriteLine("Tekan ENTER untuk keluar dari aplikasi ini.");
                     Console.ReadLine();
-                    Environment.Exit(0x00000000);
+                    Environment.Exit(0);
                 }
             }
             else
             {
                 Console.WriteLine("Maaf, kami hanya bisa menjangkau 2 monitor saja.\nTekan tombol terserah untuk exit.");
                 Console.ReadLine();
-                Environment.Exit(0x00000000);
+                Environment.Exit(0);
             }
         }
     }
