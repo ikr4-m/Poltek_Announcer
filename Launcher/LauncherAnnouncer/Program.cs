@@ -24,7 +24,7 @@ namespace LauncherAnnouncer
 
             foreach (string a in args)
             {
-                switch (a[0].ToString().ToLower())
+                switch (a.ToString().ToLower())
                 {
                     // -help
                     case "-help": p.Help.Help(); break;
@@ -35,12 +35,10 @@ namespace LauncherAnnouncer
                     // -startup-remove
                     case "-startup-remove": p.Startup.DeleteStartup(p.shortcutAddress); break;
                     // -startup-location
-                    case "-startup-loc":
                     case "-startup-location":
                         Console.WriteLine(p.shortcutAddress);
                         Environment.Exit(0);
                         break;
-                    // default
                     default: p.Help.Help(); break;
                 }
             }
