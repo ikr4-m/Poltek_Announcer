@@ -9,6 +9,7 @@
         Private Sub MyApplication_Startup(ByVal sender As Object,
             ByVal e As ApplicationServices.StartupEventArgs
         ) Handles Me.Startup
+            ' Flag
             For Each s As String In My.Application.CommandLineArgs
                 Select Case s.ToLower
                     Case "-start-viewer"
@@ -28,6 +29,13 @@
                         e.Cancel = False
                 End Select
             Next
+
+            'When Duplicate
+            Dim Ina As Integer = Process.GetProcessesByName("PoltekAnnouncer").Count
+            If Ina > 1 Then
+                MessageBox.Show("Sayangnya, aplikasi telah dijalankan.", "Galat", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Environment.Exit(0)
+            End If
         End Sub
     End Class
 End Namespace
