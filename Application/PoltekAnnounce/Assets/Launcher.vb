@@ -81,6 +81,9 @@ Public Class Launcher
         StopButton.Visible = False
         PageJustice.Visible = False
 
+        'NotifyIcon
+        NotifyIcon.Visible = False
+
         'Tanya startup
         Dim StartupLoc As String = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\Poltek_Announcer.lnk"
         If File.Exists(StartupLoc) = False Then
@@ -124,7 +127,7 @@ Public Class Launcher
             Dim JumlahMonitor As Integer = SystemInformation.MonitorCount
             If JumlahMonitor > 1 Then
                 If ExecutionButton.Text = "Update" Then
-                    DebugLabelExtend("Berhasil mengupdate data!")
+                    DebugLabelExtend("Berhasil mengupdate data! Tekan tombol Minimize untuk menyembunyikan aplikasi ini.")
                     CommitData()
                 Else
                     Pindah()
@@ -155,6 +158,8 @@ Public Class Launcher
             Active = True
 
             Me.BackColor = SystemColors.ControlDark
+
+            NotifyIconExtended(True)
         End With
     End Sub
 
@@ -234,5 +239,39 @@ Public Class Launcher
 
     Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
         PageJusticeHandler(CheckBox3, TextBoxPengumuman3)
+    End Sub
+
+    Private Sub NotifyIconExtended(ByVal ExecuteButton As Boolean)
+        If Me.WindowState = FormWindowState.Minimized Then
+            NotifyIcon.Visible = True
+            NotifyIcon.Icon = Me.Icon
+
+            Dim Text As String
+            If ExecuteButton = True Then
+                Text = "Aplikasi dijalankan dan sekarang berada di System Tray!"
+            Else
+                Text = "Aplikasi berada di System Tray!"
+            End If
+
+            NotifyIcon.BalloonTipIcon = ToolTipIcon.Info
+            NotifyIcon.BalloonTipTitle = "Aplikasi Pengumuman"
+            NotifyIcon.BalloonTipText = Text + vbNewLine + "Klik 2 kali pada icon ini untuk mengembalikan aplikasi ini."
+            NotifyIcon.ShowBalloonTip(5000)
+
+            Me.Hide()
+            ShowInTaskbar = False
+        End If
+    End Sub
+
+    Private Sub Launcher_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        NotifyIconExtended(False)
+    End Sub
+
+    Private Sub NotifyIcon_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon.MouseDoubleClick
+        Me.Show()
+        ShowInTaskbar = True
+
+        Me.WindowState = FormWindowState.Normal
+        NotifyIcon.Visible = False
     End Sub
 End Class

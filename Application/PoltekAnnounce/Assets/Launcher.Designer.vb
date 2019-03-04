@@ -22,6 +22,7 @@ Partial Class Launcher
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Launcher))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.HapusBtn = New System.Windows.Forms.Button()
@@ -46,6 +47,7 @@ Partial Class Launcher
         Me.CopyrightLabel = New System.Windows.Forms.Label()
         Me.DebugLabel = New System.Windows.Forms.Label()
         Me.StopButton = New System.Windows.Forms.Button()
+        Me.NotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -285,6 +287,11 @@ Partial Class Launcher
         Me.StopButton.Text = "Hentikan"
         Me.StopButton.UseVisualStyleBackColor = True
         '
+        'NotifyIcon
+        '
+        Me.NotifyIcon.Text = "Aplikasi Pengumuman"
+        Me.NotifyIcon.Visible = True
+        '
         'Launcher
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -342,4 +349,5 @@ Partial Class Launcher
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents NotifyIcon As NotifyIcon
 End Class
