@@ -242,29 +242,29 @@ Public Class Launcher
     End Sub
 
     Private Sub NotifyIconExtended(ByVal ExecuteButton As Boolean)
-        If Me.WindowState = FormWindowState.Minimized Then
-            NotifyIcon.Visible = True
-            NotifyIcon.Icon = Me.Icon
+        NotifyIcon.Visible = True
+        NotifyIcon.Icon = Me.Icon
 
-            Dim Text As String
-            If ExecuteButton = True Then
-                Text = "Aplikasi dijalankan dan sekarang berada di System Tray!"
-            Else
-                Text = "Aplikasi berada di System Tray!"
-            End If
-
-            NotifyIcon.BalloonTipIcon = ToolTipIcon.Info
-            NotifyIcon.BalloonTipTitle = "Aplikasi Pengumuman"
-            NotifyIcon.BalloonTipText = Text + vbNewLine + "Klik 2 kali pada icon ini untuk mengembalikan aplikasi ini."
-            NotifyIcon.ShowBalloonTip(5000)
-
-            Me.Hide()
-            ShowInTaskbar = False
+        Dim Text As String
+        If ExecuteButton = True Then
+            Text = "Aplikasi dijalankan dan sekarang berada di System Tray!"
+        Else
+            Text = "Aplikasi berada di System Tray!"
         End If
+
+        NotifyIcon.BalloonTipIcon = ToolTipIcon.Info
+        NotifyIcon.BalloonTipTitle = "Aplikasi Pengumuman"
+        NotifyIcon.BalloonTipText = Text + vbNewLine + "Klik 2 kali pada icon ini untuk mengembalikan aplikasi ini."
+        NotifyIcon.ShowBalloonTip(5000)
+
+        Me.Hide()
+        ShowInTaskbar = False
     End Sub
 
     Private Sub Launcher_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        NotifyIconExtended(False)
+        If Me.WindowState = FormWindowState.Minimized Then
+            NotifyIconExtended(False)
+        End If
     End Sub
 
     Private Sub NotifyIcon_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon.MouseDoubleClick
