@@ -1,3 +1,5 @@
+# VERSI JADUL, KEMBALI KE MASTER
+
 # Poltek_Announcer
 Aplikasi ini memungkinkan anda untuk membuat pengumuman sementara di komputer. Akan tetapi aplikasi ini dapat menjangkau hingga 2 monitor sebab kami percaya bahwa aplikasi ini dikhususkan untuk komputer kantoran.
 
