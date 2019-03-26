@@ -9,9 +9,9 @@ namespace PoltekAnnouncer.Assets
     {
         // Shared Function
         private ControllerName CName = new ControllerName();
-        private Viewer _Viewer = new Viewer();
         private OpenDialog _OpenDialog = new OpenDialog();
         private DataPayload _DataPayload = new DataPayload();
+        private Viewer viewer = new Viewer();
 
 		/// <summary>Shorthand for OpenDialog</summary>
 		private class OpenDialog
@@ -42,25 +42,12 @@ namespace PoltekAnnouncer.Assets
             get { return TabControl.TabPages.Count; }
         }
 
-        /// <summary>Make the payload of data</summary>
-        public class DataPayload : IEquatable<DataPayload>
-        {
-            public AddPagesEnum Type { get; set; }
-            public string Value { get; set; }
-
-            public bool Equals(DataPayload type = null)
-            {
-                if (type != null) return Type.Equals(type);
-                else return false;
-            }
-        }
-
 		// Local Function
         /// <summary>Shorthand for adding pages in this project</summary>
         /// <param name="pagination">Index of page.</param>
         /// <param name="choose">The choosen controller.</param>
         /// <param name="path">Optional, for Image.</param>
-        private void AddPages(int pagination, AddPagesEnum choose, string path = "")
+        public void AddPages(int pagination, AddPagesEnum choose, string path = "")
         {
             TabPage tabpage = new TabPage
             {
@@ -190,6 +177,11 @@ namespace PoltekAnnouncer.Assets
             pict.Visible = true;
             pict.ImageLocation = _OpenDialog.PathFile;
             btnLoadImg.Visible = false;
+        }
+
+        private void DebugLevelExtend(string info)
+        {
+            DebugLabel.Text = "Info: " + info;
         }
     }
 }

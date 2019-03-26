@@ -12,5 +12,10 @@
 
         /// <summary>Untuk ButtonDeletePengumuman.</summary>
         public readonly string keyDelBtn = "DelPengumuman";
+
+        /// <summary>Nama untuk tombol Jalankan.</summary>
+        public readonly string BeforeRunningButton = "Jalankan";
+        /// <summary>Nama untuk tombol Perbarui.</summary>
+        public readonly string AfterRunningButton = "Perbarui";
     }
 }

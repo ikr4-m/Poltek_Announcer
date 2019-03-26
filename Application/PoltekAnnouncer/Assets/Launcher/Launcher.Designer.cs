@@ -274,7 +274,7 @@
             this.PictureDuration.Size = new System.Drawing.Size(84, 22);
             this.PictureDuration.TabIndex = 4;
             this.PictureDuration.Value = new decimal(new int[] {
-            30,
+            3,
             0,
             0,
             0});
@@ -286,7 +286,7 @@
             this.TextDuration.Size = new System.Drawing.Size(84, 22);
             this.TextDuration.TabIndex = 3;
             this.TextDuration.Value = new decimal(new int[] {
-            30,
+            5,
             0,
             0,
             0});

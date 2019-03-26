@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace PoltekAnnouncer.Assets
 {
@@ -50,8 +51,7 @@ namespace PoltekAnnouncer.Assets
         private void ExecutionButton_Click(object sender, EventArgs e)
         {       
             int limit = CountLimit;
-            var res = new List<DataPayload>();
-
+            var ret = new List<DataPayload>();
             //MessageBox.Show(limit.ToString());
 
             if (limit == 1)
@@ -72,27 +72,39 @@ namespace PoltekAnnouncer.Assets
                     if (selected.Controls.ContainsKey(keyText))
                     {
                         TextBox text = (TextBox)selected.Controls[keyText];
-                        res.Add(new DataPayload()
+                        ret.Add(new DataPayload()
                         {
                             Type = AddPagesEnum.Text,
-                            Value = text.Text
+                            Value = text.Text,
+                            FontSize = FontSize.Value,
+                            TextDuration = TextDuration.Value
                         });
                     }
                     else if (selected.Controls.ContainsKey(keyImg))
                     {
                         PictureBox pict = (PictureBox)selected.Controls[keyImg];
-                        res.Add(new DataPayload()
+                        ret.Add(new DataPayload()
                         {
                             Type = AddPagesEnum.Image,
-                            Value = pict.ImageLocation
+                            Value = pict.ImageLocation,
+                            PictDuration = PictureDuration.Value
                         });
                     }
+
+                    _DataPayload.Output = ret;
                 }
                 TabControl.SelectTab(0);
-                //MessageBox.Show(string.Join("\n", result));
-
-                _Viewer.Show();
+                UpdateJustice();                
             }
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            viewer.Hide();
+
+            ExecutionButton.Text = CName.BeforeRunningButton;
+            StopButton.Visible = false;
+            BackColor = SystemColors.Control;
         }
     }
 }
