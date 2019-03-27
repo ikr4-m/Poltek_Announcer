@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PoltekAnnouncer.Assets
@@ -7,6 +8,11 @@ namespace PoltekAnnouncer.Assets
     {
         private void ComponentForm()
         {
+            // Database purposes
+            this.Load += DatabaseLoad;
+            this.FormClosing += SavingDatabase;
+            DeleteStartup.Click += DeleteStartup_Click;
+
             // App load
             this.Load += new EventHandler(Launcher_Load);
 
@@ -47,6 +53,26 @@ namespace PoltekAnnouncer.Assets
             // Debug Label
             CopyrightLabel.Text = string.Format("(C) 2019-{0} UPT Komputer dan Sistem Informasi. All rights reserved.", DateTime.Now.Year);
             DebugLevelExtend("Siap beroperasi!");
+            
+            if (startup.Check() == false)
+            {
+                DialogResult result = MessageBox.Show("Startup belum terpasang di dalam komputer ini. Apakah anda ingin memasangnya?",
+                    "Informasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    startup.AddStartup();
+                    MessageBox.Show("Aplikasi telah berhasil dipasang di Startup!", "Informasi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    DeleteStartup.Enabled = false;
+            }
+        }
+
+        private void DeleteStartup_Click(object sender, EventArgs e)
+        {
+            File.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), @"\PoltekAnnouncer.lnk"));
+            MessageBox.Show("Startup telah terhapus!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public Launcher()

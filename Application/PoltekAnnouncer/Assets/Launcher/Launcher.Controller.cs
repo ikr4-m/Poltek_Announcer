@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace PoltekAnnouncer.Assets
 {
-    public partial class Launcher : Form
+    public partial class Launcher
     {
         // In TabControl controller
         private void AddText_Click(object sender, EventArgs e)
@@ -50,13 +50,23 @@ namespace PoltekAnnouncer.Assets
 
         private void ExecutionButton_Click(object sender, EventArgs e)
         {       
+            if (SystemInformation.MonitorCount == 1)
+                MessageBox.Show("Sayangnya, anda mungkin belum mengubah mode monitor menjadi Extend atau monitor lain belum terhubung dengan komputer anda.",
+                    "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                ExecExtend();
+        }
+
+        private void ExecExtend()
+        {
             int limit = CountLimit;
             var ret = new List<DataPayload>();
             //MessageBox.Show(limit.ToString());
 
-            if (limit == 1)
+            if (limit == 1 || ListBoxMarquee.Items.Count == 0)
             {
-                MessageBox.Show("Njir kosong");
+                MessageBox.Show("Sayangnya, masih ada data yang kosong. Silahkan periksa dan jalankan kembali",
+                    "Pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -90,11 +100,11 @@ namespace PoltekAnnouncer.Assets
                             PictDuration = PictureDuration.Value
                         });
                     }
-
+                    // lempar data dimulai
                     _DataPayload.Output = ret;
                 }
                 TabControl.SelectTab(0);
-                UpdateJustice();                
+                UpdateJustice();
             }
         }
 

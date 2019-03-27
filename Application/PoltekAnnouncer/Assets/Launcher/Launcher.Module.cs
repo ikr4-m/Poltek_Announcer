@@ -5,13 +5,14 @@ using PoltekAnnouncer.Constant;
 
 namespace PoltekAnnouncer.Assets
 {
-    public partial class Launcher : Form
+    public partial class Launcher
     {
         // Shared Function
         private ControllerName CName = new ControllerName();
         private OpenDialog _OpenDialog = new OpenDialog();
         private DataPayload _DataPayload = new DataPayload();
         private Viewer viewer = new Viewer();
+        private Startup startup = new Startup();
 
 		/// <summary>Shorthand for OpenDialog</summary>
 		private class OpenDialog
@@ -47,7 +48,7 @@ namespace PoltekAnnouncer.Assets
         /// <param name="pagination">Index of page.</param>
         /// <param name="choose">The choosen controller.</param>
         /// <param name="path">Optional, for Image.</param>
-        public void AddPages(int pagination, AddPagesEnum choose, string path = "")
+        public void AddPages(int pagination, AddPagesEnum choose, string path = "", string value ="")
         {
             TabPage tabpage = new TabPage
             {
@@ -56,7 +57,7 @@ namespace PoltekAnnouncer.Assets
             };
 
             int imgX = 300;
-            int imgY = 162;
+            int imgY = 175;
 
             string nameTxt = CName.keyText + pagination;
             string nameImg = CName.keyImg + pagination;
@@ -73,7 +74,9 @@ namespace PoltekAnnouncer.Assets
                         Multiline = true,
                         WordWrap = false,
                         Size = new Size(imgX, imgY),
-                        Location = new Point(6, 4)
+                        Location = new Point(6, 4),
+                        Dock = DockStyle.Top,
+                        Text = value
                     };
                     tabpage.Controls.Add(textbox);
 
@@ -86,7 +89,8 @@ namespace PoltekAnnouncer.Assets
                         ImageLocation = path,
 						Location = new Point(6, 4),
 						Size = new Size(imgX, imgY),
-						SizeMode = PictureBoxSizeMode.Zoom
+						SizeMode = PictureBoxSizeMode.Zoom,
+                        Dock = DockStyle.Top
                     };
                     tabpage.Controls.Add(picture);
 
@@ -96,7 +100,8 @@ namespace PoltekAnnouncer.Assets
                         Location = new Point(6, 4),
                         Size = new Size(imgX, imgY),
                         Text = "Muat Gambar",
-						Visible = false
+						Visible = false,
+                        Dock = DockStyle.Top
                     };
                     buttonLoadImg.Click += ButtonLoadImg_Click;
                     tabpage.Controls.Add(buttonLoadImg);
@@ -106,9 +111,10 @@ namespace PoltekAnnouncer.Assets
             Button buttonDel = new Button
             {
                 Name = nameDelBtn,
-                Text = "Delete",
+                Text = "Hapus",
                 Location = new Point(5, 173),
-                Size = new Size(302, 20)
+                Size = new Size(302, 20),
+                Dock = DockStyle.Bottom
             };
             buttonDel.Click += ButtonDeletePage_Click;
             tabpage.Controls.Add(buttonDel);

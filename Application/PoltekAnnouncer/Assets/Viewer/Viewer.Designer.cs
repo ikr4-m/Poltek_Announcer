@@ -74,10 +74,10 @@
             // MarqueeText
             // 
             this.MarqueeText.AutoSize = true;
-            this.MarqueeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MarqueeText.Location = new System.Drawing.Point(735, 13);
+            this.MarqueeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MarqueeText.Location = new System.Drawing.Point(764, 13);
             this.MarqueeText.Name = "MarqueeText";
-            this.MarqueeText.Size = new System.Drawing.Size(134, 44);
+            this.MarqueeText.Size = new System.Drawing.Size(105, 36);
             this.MarqueeText.TabIndex = 1;
             this.MarqueeText.Text = "Label1";
             // 
@@ -87,7 +87,7 @@
             this.TitleLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.TitleLabel.Location = new System.Drawing.Point(0, 0);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(875, 107);
+            this.TitleLabel.Size = new System.Drawing.Size(875, 101);
             this.TitleLabel.TabIndex = 5;
             this.TitleLabel.Text = "PENGUMUMAN";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

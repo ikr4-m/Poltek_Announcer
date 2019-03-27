@@ -3,15 +3,15 @@ using System.Drawing;
 
 namespace PoltekAnnouncer.Assets
 {
-    public partial class Launcher : Form
+    public partial class Launcher
     {
         private void UpdateJustice()
         {
             // Jalankan
             if (ExecutionButton.Text == CName.BeforeRunningButton)
             {
-                viewer.Deploy(_DataPayload.Output);
-                viewer.Deploy(_DataPayload.Output); // recurse
+                viewer.Deploy(_DataPayload.Output, ListboxItems);
+                viewer.Deploy(_DataPayload.Output, ListboxItems); // recurse
 
                 StopButton.Visible = true;
                 BackColor = SystemColors.ControlDark;
@@ -21,9 +21,12 @@ namespace PoltekAnnouncer.Assets
             // Perbarui
             else if (ExecutionButton.Text == CName.AfterRunningButton)
             {
-                viewer.Deploy(_DataPayload.Output);
+                viewer.Deploy(_DataPayload.Output, ListboxItems);
                 DebugLevelExtend("Data berhasil diperbarui!");
             }
+
+            if (MinimizeValidation.Checked == true) WindowState = FormWindowState.Minimized;
+            else WindowState = FormWindowState.Normal;
         }
     }
 }

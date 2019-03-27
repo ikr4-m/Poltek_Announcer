@@ -55,6 +55,7 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.FontSize = new System.Windows.Forms.NumericUpDown();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.DeleteStartup = new System.Windows.Forms.Button();
             this.GroupBox2.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.Addon.SuspendLayout();
@@ -226,6 +227,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.DeleteStartup);
             this.groupBox3.Controls.Add(this.MinimizeValidation);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
@@ -316,6 +318,15 @@
             // 
             this.FileDialog.FileName = "openFileDialog1";
             // 
+            // DeleteStartup
+            // 
+            this.DeleteStartup.Location = new System.Drawing.Point(21, 212);
+            this.DeleteStartup.Name = "DeleteStartup";
+            this.DeleteStartup.Size = new System.Drawing.Size(160, 42);
+            this.DeleteStartup.TabIndex = 7;
+            this.DeleteStartup.Text = "Hapus Startup";
+            this.DeleteStartup.UseVisualStyleBackColor = true;
+            // 
             // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -376,6 +387,7 @@
         internal System.Windows.Forms.Label label2;
         internal System.Windows.Forms.NumericUpDown PictureDuration;
         internal System.Windows.Forms.NumericUpDown TextDuration;
+        private System.Windows.Forms.Button DeleteStartup;
     }
 }
 

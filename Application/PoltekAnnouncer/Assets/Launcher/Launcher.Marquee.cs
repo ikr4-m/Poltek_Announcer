@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using System.Collections.Generic;
 
 namespace PoltekAnnouncer.Assets
 {
-    public partial class Launcher : Form
+    public partial class Launcher
     {
+        private List<string> ListboxItems = new List<string>();
+
+        private void CopyListBox(ListBox.ObjectCollection resources, object[] destination)
+        {
+            throw new NotImplementedException();
+        }
+
         private void TambahBtn_Click(object sender, EventArgs e)
         {
             string res = Interaction.InputBox("Tambahkan teks berjalan.", "Tambah Item");
-            if (res != "")
-                ListBoxMarquee.Items.Add(res);
+            if (res != "") ListboxItems.Add(res);
+            ListBoxMarquee.DataSource = null;
+            ListBoxMarquee.DataSource = ListboxItems;
         }
 
         private void EditBtn_Click(object sender, EventArgs e)
@@ -20,12 +29,13 @@ namespace PoltekAnnouncer.Assets
             else
             {
                 int index = ListBoxMarquee.SelectedIndex;
-                string res = Interaction.InputBox("Edit teks berjalan.", "Tambah Item", ListBoxMarquee.SelectedItem.ToString());
+                string res = Interaction.InputBox("Edit teks berjalan.", "Tambah Item", ListboxItems[index]);
                 if (res != "")
                 {
-                    ListBoxMarquee.Items.RemoveAt(index);
-                    ListBoxMarquee.Items.Insert(index, res);
-                    ListBoxMarquee.Refresh();
+                    ListboxItems.RemoveAt(index);
+                    ListboxItems.Insert(index, res);
+                    ListBoxMarquee.DataSource = null;
+                    ListBoxMarquee.DataSource = ListboxItems;
                 }
             }
         }
@@ -40,8 +50,9 @@ namespace PoltekAnnouncer.Assets
                     "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
-                    ListBoxMarquee.Items.RemoveAt(ListBoxMarquee.SelectedIndex);
-                    MessageBox.Show("Telah berhasil menghapus teks!", "Pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListboxItems.RemoveAt(ListBoxMarquee.SelectedIndex);
+                    ListBoxMarquee.DataSource = null;
+                    ListBoxMarquee.DataSource = ListboxItems;
                 }
             }
         }

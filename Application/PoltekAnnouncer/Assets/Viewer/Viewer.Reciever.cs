@@ -7,7 +7,7 @@ using static PoltekAnnouncer.Assets.Launcher;
 
 namespace PoltekAnnouncer.Assets
 {
-    public partial class Viewer : Form
+    public partial class Viewer
     {
         private ControllerName CName = new ControllerName();
         private List<DataPayload> DATA;
@@ -71,13 +71,14 @@ namespace PoltekAnnouncer.Assets
             Initial, Update
         }
 
-        public void Deploy(List<DataPayload> datas)
+        public void Deploy(List<DataPayload> datas, List<string> marquee)
         {
             TabControls.TabPages.Clear();
             DataPayload.BypassData Data = new DataPayload.BypassData(datas);
             var data = Data.Data;
             int page = 0;
 
+            // add page
             for (var i = 0; i < data.Count; i++)
             {
                 switch (data[i].Type)
@@ -93,10 +94,13 @@ namespace PoltekAnnouncer.Assets
             }
             page = 0;
 
+            // data process
             TabControls.SelectTab(0);
+            MarqueeText.Text = string.Join(" | ", marquee).Replace("&", "&&");
             DATA = datas;
             //Slideshow.Enabled = true;
 
+            // change slideshow interval
             TabPage selected = TabControls.SelectedTab;
             int index = TabControls.SelectedIndex;
             string label = CName.keyText + index;
@@ -107,6 +111,10 @@ namespace PoltekAnnouncer.Assets
             else if (selected.Controls.ContainsKey(image))
                 Slideshow.Interval = int.Parse(DATA[index].PictDuration.ToString()) * 10000;
 
+            // pemindah layar
+            Screen screen = Screen.AllScreens[1];
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = screen.Bounds.Location;
             this.Show();
         }
     }
