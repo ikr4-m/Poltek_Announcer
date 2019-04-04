@@ -12,6 +12,7 @@ Aplikasi ini memungkinkan anda untuk membuat pengumuman sementara di komputer. A
 1. Anda download rilisan terbaru [di sini](https://github.com/skymunn/Poltek_Announcer/releases).
 2. Jalankan PoltekAnnouncer.exe
 3. Ubah sedikit isinya dan aplikasi anda siap dijalankan dengan menekan tombol **Jalankan**.
+4. Aplikasi akan ter-minimize dengan sendirinya tanda aplikasi berjalan dengan lancar.
 
 ### Catatan Sedikit
 Aplikasi anda akan ketahuan berjalan hanya dengan melihat perbandingan di bawah ini. Aplikasi yang tidak berjalan aplikasinya berwarna putih terang dan apabila aplikasi tersebut telah berjalan maka aplikasinya berwarna hitam kelabu.
