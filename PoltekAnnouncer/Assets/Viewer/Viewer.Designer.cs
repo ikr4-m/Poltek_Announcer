@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Viewer));
             this.LiveClock = new System.Windows.Forms.Timer(this.components);
             this.TimeSetting = new System.Windows.Forms.Label();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
@@ -114,7 +115,7 @@
             this.TabControls.Location = new System.Drawing.Point(3, 78);
             this.TabControls.Name = "TabControls";
             this.TabControls.SelectedIndex = 0;
-            this.TabControls.Size = new System.Drawing.Size(872, 426);
+            this.TabControls.Size = new System.Drawing.Size(872, 416);
             this.TabControls.TabIndex = 6;
             // 
             // label1
@@ -137,6 +138,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TabControls);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Viewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Viewer";

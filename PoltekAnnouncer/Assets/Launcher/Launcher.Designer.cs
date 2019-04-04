@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Launcher));
             this.DebugLabel = new System.Windows.Forms.Label();
             this.CopyrightLabel = new System.Windows.Forms.Label();
             this.ExecutionButton = new System.Windows.Forms.Button();
@@ -47,6 +46,7 @@
             this.StopButton = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DeleteStartup = new System.Windows.Forms.Button();
             this.MinimizeValidation = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,7 +55,6 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.FontSize = new System.Windows.Forms.NumericUpDown();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.DeleteStartup = new System.Windows.Forms.Button();
             this.GroupBox2.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.Addon.SuspendLayout();
@@ -65,11 +64,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FontSize)).BeginInit();
             this.SuspendLayout();
-            // 
-            // NotifyIcon
-            // 
-            this.NotifyIcon.Text = "Aplikasi Pengumuman";
-            this.NotifyIcon.Visible = true;
             // 
             // DebugLabel
             // 
@@ -242,6 +236,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Pengaturan";
             // 
+            // DeleteStartup
+            // 
+            this.DeleteStartup.Location = new System.Drawing.Point(21, 212);
+            this.DeleteStartup.Name = "DeleteStartup";
+            this.DeleteStartup.Size = new System.Drawing.Size(160, 42);
+            this.DeleteStartup.TabIndex = 7;
+            this.DeleteStartup.Text = "Hapus Startup";
+            this.DeleteStartup.UseVisualStyleBackColor = true;
+            // 
             // MinimizeValidation
             // 
             this.MinimizeValidation.Location = new System.Drawing.Point(9, 114);
@@ -318,15 +321,6 @@
             // 
             this.FileDialog.FileName = "openFileDialog1";
             // 
-            // DeleteStartup
-            // 
-            this.DeleteStartup.Location = new System.Drawing.Point(21, 212);
-            this.DeleteStartup.Name = "DeleteStartup";
-            this.DeleteStartup.Size = new System.Drawing.Size(160, 42);
-            this.DeleteStartup.TabIndex = 7;
-            this.DeleteStartup.Text = "Hapus Startup";
-            this.DeleteStartup.UseVisualStyleBackColor = true;
-            // 
             // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -340,10 +334,11 @@
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.GroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Launcher";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Aplikasi Pengumuman";
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox2.PerformLayout();
             this.TabControl.ResumeLayout(false);
@@ -360,8 +355,6 @@
         }
 
         #endregion
-
-        internal System.Windows.Forms.NotifyIcon NotifyIcon;
         internal System.Windows.Forms.Label DebugLabel;
         internal System.Windows.Forms.Label CopyrightLabel;
         internal System.Windows.Forms.Button ExecutionButton;
