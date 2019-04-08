@@ -51,7 +51,9 @@ namespace PoltekAnnouncer.Assets
                 switch (keys[keyType])
                 {
                     case "Text":
-                        AddPages(page, AddPagesEnum.Text, value: keys[keyValue]);
+                        AddPages(page, AddPagesEnum.Text, 
+                            value: keys[keyValue].Replace("|||", Environment.NewLine
+                        ));
                         break;
                     case "Image":
                         AddPages(page, AddPagesEnum.Image, path: keys[keyValue]);
@@ -100,7 +102,7 @@ namespace PoltekAnnouncer.Assets
                 {
                     TextBox text = (TextBox)selected.Controls[keyText];
                     data["Data"].AddKey(keyType, "Text");
-                    data["Data"].AddKey(keyVal, text.Text);
+                    data["Data"].AddKey(keyVal, text.Text.Replace(Environment.NewLine, "|||"));
                 }
                 else if (selected.Controls.ContainsKey(keyImg))
                 {
