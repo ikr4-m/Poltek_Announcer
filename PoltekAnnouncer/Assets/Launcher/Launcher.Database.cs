@@ -52,8 +52,8 @@ namespace PoltekAnnouncer.Assets
                 {
                     case "Text":
                         AddPages(page, AddPagesEnum.Text, 
-                            value: keys[keyValue].Replace("|||", Environment.NewLine
-                        ));
+                            value: keys[keyValue].Replace("|||", Environment.NewLine)
+                        );
                         break;
                     case "Image":
                         AddPages(page, AddPagesEnum.Image, path: keys[keyValue]);
