@@ -238,7 +238,7 @@
             // 
             // DeleteStartup
             // 
-            this.DeleteStartup.Location = new System.Drawing.Point(21, 212);
+            this.DeleteStartup.Location = new System.Drawing.Point(19, 91);
             this.DeleteStartup.Name = "DeleteStartup";
             this.DeleteStartup.Size = new System.Drawing.Size(160, 42);
             this.DeleteStartup.TabIndex = 7;
@@ -253,6 +253,7 @@
             this.MinimizeValidation.TabIndex = 3;
             this.MinimizeValidation.Text = "Buat aplikasi sembunyi di dalam System Tray ketika aplikasi sedang dijalankan.";
             this.MinimizeValidation.UseVisualStyleBackColor = true;
+            this.MinimizeValidation.Visible = false;
             // 
             // label3
             // 
@@ -262,6 +263,7 @@
             this.label3.Size = new System.Drawing.Size(84, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Durasi Teks";
+            this.label3.Visible = false;
             // 
             // label2
             // 
@@ -283,6 +285,7 @@
             0,
             0,
             0});
+            this.PictureDuration.Visible = false;
             // 
             // TextDuration
             // 

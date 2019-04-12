@@ -32,7 +32,6 @@ namespace PoltekAnnouncer.Assets
             _form_resize._get_initial_size();
 
             WindowState = FormWindowState.Maximized;
-            Slideshow.Enabled = true;
         }
 
         private void _Resize(object sender, EventArgs e)
@@ -73,9 +72,9 @@ namespace PoltekAnnouncer.Assets
             string image = CName.keyImg + index;
 
             if (selected.Controls.ContainsKey(label))
-                Slideshow.Interval = int.Parse(DATA[index].TextDuration.ToString()) * 10000;
+                Slideshow.Interval = int.Parse(DATA[index].TextDuration.ToString() + "000");
             else if (selected.Controls.ContainsKey(image))
-                Slideshow.Interval = int.Parse(DATA[index].PictDuration.ToString()) * 10000;
+                Slideshow.Interval = int.Parse(DATA[index].PictDuration.ToString() + "000");
 
             index++;
             if (index == DATA.Count) index = 0;

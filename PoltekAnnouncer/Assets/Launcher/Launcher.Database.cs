@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using IniParser;
 using IniParser.Model;
 
@@ -66,10 +65,9 @@ namespace PoltekAnnouncer.Assets
         private void GetGlobalSettings(KeyDataCollection keys)
         {
             FontSize.Value = int.Parse(keys["FontSize"]);
-            PictureDuration.Value = int.Parse(keys["PictDuration"]);
+            PictureDuration.Value = int.Parse(keys["PictureDuration"]);
             TextDuration.Value = int.Parse(keys["TextDuration"]);
-            if (keys["MinimizeWhenLaunch"] == "0") MinimizeValidation.Checked = false;
-            else MinimizeValidation.Checked = true;
+            //MinimizeValidation.Checked = keys["MinimizeWhenLaunch"] == "0" ? false : true;
         }
 
         private void GetMarqueeText(KeyDataCollection keys)
@@ -121,6 +119,17 @@ namespace PoltekAnnouncer.Assets
             {
                 data["Marquee"].AddKey(i.ToString(), res[i]);
             }
+
+            // read global setting
+            data.Sections.RemoveSection("Global");
+            /* 
+             *   FontSize.Value = int.Parse(keys["FontSize"]);
+             *   PictureDuration.Value = int.Parse(keys["PictDuration"]);
+             *   TextDuration.Value = int.Parse(keys["TextDuration"]);
+            */
+            data["Global"].AddKey("FontSize", FontSize.Value.ToString());
+            data["Global"].AddKey("TextDuration", TextDuration.Value.ToString());
+            data["Global"].AddKey("PictureDuration", TextDuration.Value.ToString());
 
             parser.WriteFile("db.ini", data);
         }

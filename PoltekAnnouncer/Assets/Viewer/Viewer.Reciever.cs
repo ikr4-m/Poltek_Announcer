@@ -107,9 +107,11 @@ namespace PoltekAnnouncer.Assets
             string image = CName.keyImg + index;
 
             if (selected.Controls.ContainsKey(label))
-                Slideshow.Interval = int.Parse(DATA[index].TextDuration.ToString()) * 10000;
+                Slideshow.Interval = int.Parse(DATA[index].TextDuration.ToString() + "000");
             else if (selected.Controls.ContainsKey(image))
-                Slideshow.Interval = int.Parse(DATA[index].PictDuration.ToString()) * 10000;
+                Slideshow.Interval = int.Parse(DATA[index].PictDuration.ToString() + "000");
+            Slideshow.Enabled = false;
+            Slideshow.Enabled = true;
 
             // pemindah layar
             Screen screen = Screen.AllScreens[1];
