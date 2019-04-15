@@ -270,13 +270,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 17);
+            this.label2.Size = new System.Drawing.Size(93, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Durasi Foto";
+            this.label2.Text = "Durasi (detik)";
             // 
             // PictureDuration
             // 
             this.PictureDuration.Location = new System.Drawing.Point(110, 86);
+            this.PictureDuration.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.PictureDuration.Name = "PictureDuration";
             this.PictureDuration.Size = new System.Drawing.Size(84, 22);
             this.PictureDuration.TabIndex = 4;
@@ -290,6 +295,11 @@
             // TextDuration
             // 
             this.TextDuration.Location = new System.Drawing.Point(110, 58);
+            this.TextDuration.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.TextDuration.Name = "TextDuration";
             this.TextDuration.Size = new System.Drawing.Size(84, 22);
             this.TextDuration.TabIndex = 3;
@@ -311,6 +321,11 @@
             // FontSize
             // 
             this.FontSize.Location = new System.Drawing.Point(110, 30);
+            this.FontSize.Maximum = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
             this.FontSize.Name = "FontSize";
             this.FontSize.Size = new System.Drawing.Size(84, 22);
             this.FontSize.TabIndex = 2;
