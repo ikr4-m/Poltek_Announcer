@@ -1,5 +1,4 @@
-﻿using System.Windows.Forms;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace PoltekAnnouncer.Assets
 {
@@ -24,9 +23,6 @@ namespace PoltekAnnouncer.Assets
                 viewer.Deploy(_DataPayload.Output, ListboxItems);
                 DebugLevelExtend("Data berhasil diperbarui!");
             }
-
-            if (MinimizeValidation.Checked == true) WindowState = FormWindowState.Minimized;
-            else WindowState = FormWindowState.Normal;
         }
     }
 }

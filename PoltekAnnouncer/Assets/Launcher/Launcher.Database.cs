@@ -67,7 +67,6 @@ namespace PoltekAnnouncer.Assets
             FontSize.Value = int.Parse(keys["FontSize"]);
             PictureDuration.Value = int.Parse(keys["PictureDuration"]);
             TextDuration.Value = int.Parse(keys["TextDuration"]);
-            //MinimizeValidation.Checked = keys["MinimizeWhenLaunch"] == "0" ? false : true;
         }
 
         private void GetMarqueeText(KeyDataCollection keys)

@@ -47,7 +47,6 @@
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DeleteStartup = new System.Windows.Forms.Button();
-            this.MinimizeValidation = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PictureDuration = new System.Windows.Forms.NumericUpDown();
@@ -222,7 +221,6 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.DeleteStartup);
-            this.groupBox3.Controls.Add(this.MinimizeValidation);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.PictureDuration);
@@ -244,16 +242,6 @@
             this.DeleteStartup.TabIndex = 7;
             this.DeleteStartup.Text = "Hapus Startup";
             this.DeleteStartup.UseVisualStyleBackColor = true;
-            // 
-            // MinimizeValidation
-            // 
-            this.MinimizeValidation.Location = new System.Drawing.Point(9, 114);
-            this.MinimizeValidation.Name = "MinimizeValidation";
-            this.MinimizeValidation.Size = new System.Drawing.Size(185, 76);
-            this.MinimizeValidation.TabIndex = 3;
-            this.MinimizeValidation.Text = "Buat aplikasi sembunyi di dalam System Tray ketika aplikasi sedang dijalankan.";
-            this.MinimizeValidation.UseVisualStyleBackColor = true;
-            this.MinimizeValidation.Visible = false;
             // 
             // label3
             // 
@@ -387,7 +375,6 @@
         internal System.Windows.Forms.Button StopButton;
         internal System.Windows.Forms.GroupBox GroupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox MinimizeValidation;
         private System.Windows.Forms.Button AddPicture;
         private System.Windows.Forms.Button AddText;
         internal System.Windows.Forms.Label Label1;
