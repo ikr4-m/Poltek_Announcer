@@ -70,7 +70,7 @@ namespace PoltekAnnouncer.Assets
             int index = TabControls.SelectedIndex;
             string label = CName.keyText + index;
             string image = CName.keyImg + index;
-            MessageBox.Show(index.ToString());
+            //MessageBox.Show(index.ToString());
 
             index++;
             if (index == DATA.Count) index = 0;
