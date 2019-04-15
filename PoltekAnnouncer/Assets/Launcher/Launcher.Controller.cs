@@ -103,6 +103,8 @@ namespace PoltekAnnouncer.Assets
                     // lempar data dimulai
                     _DataPayload.Output = ret;
                 }
+                viewer.Slideshow.Interval = int.Parse(TextDuration.Value.ToString()) * 1000;
+
                 TabControl.SelectTab(0);
                 UpdateJustice();
             }
@@ -111,6 +113,7 @@ namespace PoltekAnnouncer.Assets
         private void StopButton_Click(object sender, EventArgs e)
         {
             viewer.Hide();
+            viewer.Slideshow.Stop();
 
             ExecutionButton.Text = CName.BeforeRunningButton;
             StopButton.Visible = false;
